@@ -13,6 +13,14 @@ export default defineConfig({
       },
     },
   },
+  // `npm start` (vite preview) untuk server deployment: port dari env PORT/APP_PORT,
+  // terima semua host (domain *.s1if.cloud), fallback SPA otomatis ke index.html.
+  preview: {
+    host: '0.0.0.0',
+    port: Number(process.env.PORT || process.env.APP_PORT) || 4173,
+    strictPort: true,
+    allowedHosts: true,
+  },
   test: {
     globals: true,
     environment: 'jsdom',
