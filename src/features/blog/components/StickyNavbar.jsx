@@ -26,6 +26,7 @@ function NavLink({ href, active, onNavigate, icon, children }) {
         event.preventDefault()
         onNavigate(href)
       }}
+      aria-label={children}
       aria-current={active ? 'page' : undefined}
       className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition ${
         active
@@ -48,13 +49,14 @@ export default function StickyNavbar({ user, currentPath, onNavigate, onOpenLogi
       <nav className="flex h-16 w-full items-center justify-between gap-2 px-4 sm:px-6 lg:px-10" aria-label="Navigasi utama">
         <a
           href="/"
+          aria-label="Delcom Blog"
           onClick={(event) => {
             event.preventDefault()
             onNavigate('/')
           }}
           className="flex items-center gap-2 text-lg font-extrabold tracking-tight text-slate-900 dark:text-white"
         >
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-accent-600 text-white shadow-md shadow-accent-600/30">
+          <span aria-hidden="true" className="grid h-9 w-9 place-items-center rounded-xl bg-accent-600 text-white shadow-md shadow-accent-600/30">
             <IconFeather size={20} />
           </span>
           <span className="hidden md:inline">
@@ -115,6 +117,7 @@ export default function StickyNavbar({ user, currentPath, onNavigate, onOpenLogi
               <button
                 type="button"
                 onClick={onLogout}
+                aria-label="Logout"
                 className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-rose-600 hover:bg-rose-50 dark:text-rose-400 dark:hover:bg-rose-950/50"
               >
                 <IconLogout size={18} />
@@ -126,6 +129,7 @@ export default function StickyNavbar({ user, currentPath, onNavigate, onOpenLogi
               <button
                 type="button"
                 onClick={onOpenLogin}
+                aria-label="Masuk"
                 className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
               >
                 <IconLogin2 size={18} />
@@ -133,6 +137,7 @@ export default function StickyNavbar({ user, currentPath, onNavigate, onOpenLogi
               </button>
               <a
                 href="/register"
+                aria-label="Daftar"
                 onClick={(event) => {
                   event.preventDefault()
                   onNavigate('/register')

@@ -86,7 +86,7 @@ export default function AiPostGeneratorModal({ onClose, onApply }) {
 
           <div className="min-w-0 rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-950">
             {loading && (
-              <div className="flex h-full min-h-64 flex-col items-center justify-center text-center text-slate-500">
+              <div className="flex h-full min-h-64 flex-col items-center justify-center text-center text-slate-500 dark:text-slate-400">
                 <IconLoader2 size={40} className="mb-3 animate-spin text-violet-600" />
                 <p className="font-medium">{includeWebSearch ? 'Menelusuri mesin pencari & menyusun artikel...' : 'AI sedang menyusun artikel...'}</p>
               </div>

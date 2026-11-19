@@ -4,17 +4,17 @@ import { formatDate, formatDateTime, initials, readingTimeLabel, showConfirm, sh
 vi.mock('sweetalert2', () => ({ default: { fire: vi.fn() } }))
 
 describe('dialog SweetAlert2', () => {
-  it('showSuccess dengan judul default & kustom', () => {
-    showSuccess('Tersimpan')
+  it('showSuccess dengan judul default & kustom', async () => {
+    await showSuccess('Tersimpan')
     expect(Swal.fire).toHaveBeenLastCalledWith(expect.objectContaining({ icon: 'success', title: 'Berhasil', text: 'Tersimpan' }))
-    showSuccess('Tersimpan', 'Mantap')
+    await showSuccess('Tersimpan', 'Mantap')
     expect(Swal.fire).toHaveBeenLastCalledWith(expect.objectContaining({ title: 'Mantap' }))
   })
 
-  it('showError dengan judul default & kustom', () => {
-    showError('Gagal')
+  it('showError dengan judul default & kustom', async () => {
+    await showError('Gagal')
     expect(Swal.fire).toHaveBeenLastCalledWith(expect.objectContaining({ icon: 'error', title: 'Terjadi Kesalahan', text: 'Gagal' }))
-    showError('Gagal', 'Oops')
+    await showError('Gagal', 'Oops')
     expect(Swal.fire).toHaveBeenLastCalledWith(expect.objectContaining({ title: 'Oops' }))
   })
 

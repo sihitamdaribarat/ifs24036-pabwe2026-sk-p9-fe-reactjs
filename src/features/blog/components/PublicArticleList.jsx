@@ -27,7 +27,7 @@ function ArticleCard({ post, onNavigate }) {
         {post.cover_image_path ? (
           <img src={post.cover_image_path} alt={post.title} loading="lazy" className="aspect-[16/9] w-full object-cover" />
         ) : (
-          <div className="grid aspect-[16/9] w-full place-items-center bg-gradient-to-br from-accent-500 to-accent-900 text-5xl font-black text-white/80">
+          <div className="grid aspect-[16/9] w-full place-items-center bg-gradient-to-br from-accent-500 to-accent-900 text-5xl font-black text-white">
             {initials(post.title)}
           </div>
         )}
@@ -162,7 +162,7 @@ export default function PublicArticleList({ user, onNavigate }) {
         )}
 
         {!loading && !error && posts.length === 0 && (
-          <div className="flex flex-col items-center rounded-2xl border border-dashed border-slate-300 py-16 text-center text-slate-500 dark:border-slate-700">
+          <div className="flex flex-col items-center rounded-2xl border border-dashed border-slate-300 py-16 text-center text-slate-500 dark:border-slate-700 dark:text-slate-400">
             <IconArticleOff size={48} className="mb-3 text-slate-400" />
             <p className="font-semibold">Belum ada artikel yang cocok.</p>
             <p className="text-sm">Coba kata kunci atau kategori lain.</p>

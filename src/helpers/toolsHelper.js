@@ -1,17 +1,18 @@
-import Swal from 'sweetalert2'
-
 // Dialog notifikasi SweetAlert2 & utilitas format tanggal.
+// SweetAlert2 dimuat saat pertama kali dialog dibutuhkan (dynamic import) agar tidak
+// membebani unduhan JavaScript awal halaman.
+const fire = (options) => import('sweetalert2').then(({ default: Swal }) => Swal.fire(options))
 
 export function showSuccess(message, title = 'Berhasil') {
-  return Swal.fire({ icon: 'success', title, text: message, timer: 1800, showConfirmButton: false })
+  return fire({ icon: 'success', title, text: message, timer: 1800, showConfirmButton: false })
 }
 
 export function showError(message, title = 'Terjadi Kesalahan') {
-  return Swal.fire({ icon: 'error', title, text: message, confirmButtonColor: '#e11d48' })
+  return fire({ icon: 'error', title, text: message, confirmButtonColor: '#e11d48' })
 }
 
 export async function showConfirm(message, title = 'Apakah Anda yakin?', confirmText = 'Ya, lanjutkan') {
-  const result = await Swal.fire({
+  const result = await fire({
     icon: 'warning',
     title,
     text: message,

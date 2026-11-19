@@ -137,7 +137,7 @@ export default function AuthPage({ mode, onNavigate, onLoginSuccess }) {
               Tulis artikel Markdown, kelola draf, dan hasilkan ide tulisan dengan AI Blog Generator yang terhubung ke mesin pencari.
             </p>
           </div>
-          <p className="text-sm text-accent-200">© 2026 Delcom Blog</p>
+          <p className="text-sm text-accent-100">© 2026 Delcom Blog</p>
         </div>
 
         <div className="p-8 sm:p-10">

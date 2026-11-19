@@ -143,7 +143,7 @@ export default function AuthorDashboard({ user, onNavigate, isDark }) {
             <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
               {loading && (
                 <tr>
-                  <td colSpan={6} className="px-4 py-10 text-center text-slate-500">
+                  <td colSpan={6} className="px-4 py-10 text-center text-slate-500 dark:text-slate-400">
                     Memuat artikel...
                   </td>
                 </tr>
@@ -159,7 +159,7 @@ export default function AuthorDashboard({ user, onNavigate, isDark }) {
                 <tr key={post.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/40">
                   <td className="max-w-md px-4 py-3">
                     <p className="truncate font-semibold text-slate-900 dark:text-white">{post.title}</p>
-                    <p className="truncate text-xs text-slate-400">/{post.slug}</p>
+                    <p className="truncate text-xs text-slate-500 dark:text-slate-400">/{post.slug}</p>
                   </td>
                   <td className="px-4 py-3">
                     <span className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium dark:bg-slate-800">{post.category}</span>
@@ -175,20 +175,20 @@ export default function AuthorDashboard({ user, onNavigate, isDark }) {
                         aria-label={`Status terbit ${post.title}`}
                       />
                       <span className="relative h-6 w-11 rounded-full bg-slate-300 transition after:absolute after:left-0.5 after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-white after:shadow after:transition peer-checked:bg-emerald-500 peer-checked:after:translate-x-5 dark:bg-slate-700" />
-                      <span className={`text-xs font-semibold ${post.is_published ? 'text-emerald-600 dark:text-emerald-400' : 'text-amber-600 dark:text-amber-400'}`}>
+                      <span className={`text-xs font-semibold ${post.is_published ? 'text-emerald-700 dark:text-emerald-400' : 'text-amber-700 dark:text-amber-400'}`}>
                         {post.is_published ? 'Terbit' : 'Draf'}
                       </span>
                     </label>
                   </td>
-                  <td className="px-4 py-3 text-slate-500">{readingTimeLabel(post.reading_time)}</td>
-                  <td className="px-4 py-3 text-slate-500">{formatDateTime(post.updated_at)}</td>
+                  <td className="px-4 py-3 text-slate-500 dark:text-slate-400">{readingTimeLabel(post.reading_time)}</td>
+                  <td className="px-4 py-3 text-slate-500 dark:text-slate-400">{formatDateTime(post.updated_at)}</td>
                   <td className="relative px-4 py-3 text-right">
                     <button
                       type="button"
                       onClick={() => setMenuId(menuId === post.id ? null : post.id)}
                       aria-label={`Menu aksi ${post.title}`}
                       aria-expanded={menuId === post.id}
-                      className="rounded-lg p-1.5 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800"
+                      className="rounded-lg p-1.5 text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"
                     >
                       <IconDotsVertical size={18} />
                     </button>

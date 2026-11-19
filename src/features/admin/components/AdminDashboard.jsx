@@ -86,7 +86,7 @@ export default function AdminDashboard({ onNavigate }) {
             <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
               {loading && (
                 <tr>
-                  <td colSpan={8} className="px-4 py-10 text-center text-slate-500">
+                  <td colSpan={8} className="px-4 py-10 text-center text-slate-500 dark:text-slate-400">
                     Memuat data...
                   </td>
                 </tr>
@@ -158,7 +158,7 @@ export default function AdminDashboard({ onNavigate }) {
             <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
               {!loading && visiblePosts.length === 0 && (
                 <tr>
-                  <td colSpan={7} className="px-4 py-10 text-center text-slate-500">
+                  <td colSpan={7} className="px-4 py-10 text-center text-slate-500 dark:text-slate-400">
                     Tidak ada artikel.
                   </td>
                 </tr>

@@ -76,9 +76,9 @@ describe('App routing SPA', () => {
     ['/posts/halo%20dunia', 'page:detail:halo dunia'],
     ['/login', 'page:login'],
     ['/register', 'page:register'],
-  ])('rute %s', (path, text) => {
+  ])('rute %s', async (path, text) => {
     renderAt(path)
-    expect(screen.getByText(text)).toBeInTheDocument()
+    expect(await screen.findByText(text)).toBeInTheDocument()
   })
 
   it('rute tidak dikenal menampilkan 404', async () => {
@@ -94,7 +94,7 @@ describe('App routing SPA', () => {
     const user = userEvent.setup()
     renderAt('/')
     await user.click(screen.getByText('stub-buka-artikel'))
-    expect(screen.getByText('page:detail:halo')).toBeInTheDocument()
+    expect(await screen.findByText('page:detail:halo')).toBeInTheDocument()
     expect(window.location.pathname).toBe('/posts/halo')
     expect(window.scrollTo).toHaveBeenCalledWith(0, 0)
 
@@ -113,9 +113,9 @@ describe('App hak akses multi-tier', () => {
     expect(window.location.pathname).toBe('/login')
   })
 
-  it('penulis dapat membuka workspace (termasuk trailing slash)', () => {
+  it('penulis dapat membuka workspace (termasuk trailing slash)', async () => {
     renderAt('/author/', MEMBER)
-    expect(screen.getByText('page:author:Budi:false')).toBeInTheDocument()
+    expect(await screen.findByText('page:author:Budi:false')).toBeInTheDocument()
   })
 
   it('penulis yang membuka /admin diarahkan ke /author', async () => {
@@ -124,9 +124,9 @@ describe('App hak akses multi-tier', () => {
     expect(window.location.pathname).toBe('/author')
   })
 
-  it('admin dapat membuka panel admin', () => {
+  it('admin dapat membuka panel admin', async () => {
     renderAt('/admin', ADMIN)
-    expect(screen.getByText('page:admin')).toBeInTheDocument()
+    expect(await screen.findByText('page:admin')).toBeInTheDocument()
   })
 
   it('user yang sudah login diarahkan dari /login dan /register', async () => {
@@ -193,7 +193,7 @@ describe('App sesi login', () => {
 
   it('event unauthorized (401) mengakhiri sesi', async () => {
     renderAt('/author', MEMBER)
-    expect(screen.getByText(/page:author:Budi/)).toBeInTheDocument()
+    expect(await screen.findByText(/page:author:Budi/)).toBeInTheDocument()
 
     act(() => {
       window.dispatchEvent(new CustomEvent(UNAUTHORIZED_EVENT))

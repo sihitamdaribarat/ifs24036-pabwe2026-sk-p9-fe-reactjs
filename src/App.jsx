@@ -1,16 +1,26 @@
-import { useCallback, useEffect, useState } from 'react'
-import { IconMapOff } from '@tabler/icons-react'
+import { Suspense, lazy, useCallback, useEffect, useState } from 'react'
+import { IconLoader2, IconMapOff } from '@tabler/icons-react'
 import StickyNavbar from './features/blog/components/StickyNavbar.jsx'
 import PublicArticleList from './features/blog/components/PublicArticleList.jsx'
-import PublicArticleDetail from './features/blog/components/PublicArticleDetail.jsx'
-import AuthorDashboard from './features/blog/components/AuthorDashboard.jsx'
-import AdminDashboard from './features/admin/components/AdminDashboard.jsx'
 import AuthPage from './features/auth/components/AuthPage.jsx'
 import AuthModal from './features/auth/modals/AuthModal.jsx'
 import { logout } from './features/auth/api/authApi.js'
 import { UNAUTHORIZED_EVENT, clearSession, getStoredUser, saveSession } from './helpers/apiHelper.js'
 import { showError, showSuccess } from './helpers/toolsHelper.js'
 import useTheme from './hooks/useTheme.js'
+
+// Halaman berat (Toast UI Editor/Viewer) dimuat terpisah (code splitting) sehingga beranda
+// tidak ikut mengunduh JS/CSS editor.
+const PublicArticleDetail = lazy(() => import('./features/blog/components/PublicArticleDetail.jsx'))
+const AuthorDashboard = lazy(() => import('./features/blog/components/AuthorDashboard.jsx'))
+const AdminDashboard = lazy(() => import('./features/admin/components/AdminDashboard.jsx'))
+
+const pageFallback = (
+  <div className="flex justify-center py-24 text-slate-500 dark:text-slate-400" role="status">
+    <IconLoader2 size={32} className="animate-spin" aria-hidden="true" />
+    <span className="sr-only">Memuat halaman...</span>
+  </div>
+)
 
 const STATIC_ROUTES = {
   '/': 'home',
@@ -124,7 +134,9 @@ export default function App() {
   return (
     <div className="flex min-h-screen flex-col">
       <StickyNavbar user={user} currentPath={path} onNavigate={navigate} onOpenLogin={() => setAuthModalOpen(true)} onLogout={handleLogout} theme={theme} />
-      <main className="flex-1">{redirect ? null : pages[route.name]()}</main>
+      <main className="flex-1">
+        <Suspense fallback={pageFallback}>{redirect ? null : pages[route.name]()}</Suspense>
+      </main>
       <footer className="border-t border-slate-200 px-4 py-6 text-center text-sm text-slate-500 dark:border-slate-800 dark:text-slate-400">
         © 2026 Delcom Blog — Platform publikasi artikel multi-tier dengan AI Blog Generator.
       </footer>

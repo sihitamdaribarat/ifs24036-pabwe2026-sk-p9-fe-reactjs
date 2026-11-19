@@ -13,6 +13,10 @@ export default defineConfig({
       },
     },
   },
+  // Source map untuk debugging produksi (audit Lighthouse "Missing source maps").
+  build: {
+    sourcemap: true,
+  },
   // `npm start` (vite preview) untuk server deployment: port dari env PORT/APP_PORT,
   // terima semua host (domain *.s1if.cloud), fallback SPA otomatis ke index.html.
   preview: {

@@ -3,15 +3,18 @@
 /* Dark mode berbasis class "dark" pada <html> (dikelola hook useTheme). */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Warna aksen dinamis: kelas bg-accent-600, text-accent-600, dst. */
+/* Warna aksen dinamis: kelas bg-accent-600, text-accent-600, dst.
+   Shade 600/700 dipilih agar teks putih di atasnya memenuhi kontras WCAG AA (>= 4.5:1). */
 @theme inline {
   --color-accent-50: var(--accent-50);
   --color-accent-100: var(--accent-100);
   --color-accent-200: var(--accent-200);
+  --color-accent-300: var(--accent-300);
   --color-accent-400: var(--accent-400);
   --color-accent-500: var(--accent-500);
   --color-accent-600: var(--accent-600);
   --color-accent-700: var(--accent-700);
+  --color-accent-800: var(--accent-800);
   --color-accent-900: var(--accent-900);
   --font-sans: 'Inter', ui-sans-serif, system-ui, 'Segoe UI', Roboto, sans-serif;
 }
@@ -21,10 +24,12 @@
   --accent-50: #eef2ff;
   --accent-100: #e0e7ff;
   --accent-200: #c7d2fe;
+  --accent-300: #a5b4fc;
   --accent-400: #818cf8;
   --accent-500: #6366f1;
   --accent-600: #4f46e5;
   --accent-700: #4338ca;
+  --accent-800: #3730a3;
   --accent-900: #312e81;
 }
 
@@ -32,10 +37,12 @@
   --accent-50: #ecfdf5;
   --accent-100: #d1fae5;
   --accent-200: #a7f3d0;
+  --accent-300: #6ee7b7;
   --accent-400: #34d399;
   --accent-500: #10b981;
-  --accent-600: #059669;
-  --accent-700: #047857;
+  --accent-600: #047857;
+  --accent-700: #065f46;
+  --accent-800: #064e3b;
   --accent-900: #064e3b;
 }
 
@@ -43,10 +50,12 @@
   --accent-50: #fff1f2;
   --accent-100: #ffe4e6;
   --accent-200: #fecdd3;
+  --accent-300: #fda4af;
   --accent-400: #fb7185;
   --accent-500: #f43f5e;
   --accent-600: #e11d48;
   --accent-700: #be123c;
+  --accent-800: #9f1239;
   --accent-900: #881337;
 }
 
@@ -54,10 +63,12 @@
   --accent-50: #fffbeb;
   --accent-100: #fef3c7;
   --accent-200: #fde68a;
+  --accent-300: #fcd34d;
   --accent-400: #fbbf24;
   --accent-500: #f59e0b;
-  --accent-600: #d97706;
-  --accent-700: #b45309;
+  --accent-600: #b45309;
+  --accent-700: #92400e;
+  --accent-800: #78350f;
   --accent-900: #78350f;
 }
 
