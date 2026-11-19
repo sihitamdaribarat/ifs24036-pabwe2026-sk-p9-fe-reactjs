@@ -49,7 +49,6 @@ export default function StickyNavbar({ user, currentPath, onNavigate, onOpenLogi
       <nav className="flex h-16 w-full items-center justify-between gap-2 px-4 sm:px-6 lg:px-10" aria-label="Navigasi utama">
         <a
           href="/"
-          aria-label="Delcom Blog"
           onClick={(event) => {
             event.preventDefault()
             onNavigate('/')
@@ -59,7 +58,8 @@ export default function StickyNavbar({ user, currentPath, onNavigate, onOpenLogi
           <span aria-hidden="true" className="grid h-9 w-9 place-items-center rounded-xl bg-accent-600 text-white shadow-md shadow-accent-600/30">
             <IconFeather size={20} />
           </span>
-          <span className="hidden md:inline">
+          {/* sr-only di layar kecil agar link tetap punya nama yang sama dengan teks yang terlihat */}
+          <span className="sr-only md:not-sr-only">
             Delcom<span className="text-accent-600 dark:text-accent-400">Blog</span>
           </span>
         </a>

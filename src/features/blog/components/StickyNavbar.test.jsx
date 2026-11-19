@@ -26,7 +26,7 @@ describe('StickyNavbar', () => {
     await user.click(screen.getByRole('link', { name: /Beranda/ }))
     expect(onNavigate).toHaveBeenCalledWith('/')
 
-    await user.click(screen.getByRole('link', { name: 'Delcom Blog' }))
+    await user.click(screen.getByRole('link', { name: 'DelcomBlog' }))
     expect(onNavigate).toHaveBeenLastCalledWith('/')
   })
 
